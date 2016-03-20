@@ -128,9 +128,8 @@ Accuracy <- c(max(rfModel$results$Accuracy),
 Kappa <- c(max(rfModel$results$Kappa),
         max(bgModel$results$Kappa),
         max(gbmModel$results$Kappa))
-
 performance <- cbind(model,Accuracy,Kappa)
-
+OOSerror <-1-max(rfModel$results$Accuracy
 ```
 
 ```{r table}
@@ -140,7 +139,7 @@ knitr::kable(performance)
 The accuracy of the Random Forests model is  
 **`r max(rfModel$results$Accuracy)`**. 
 
-The out of sample error is calculated as 1 - accuracy for predictions made against the cross-validation set. Given the accuracy rate is above 99% few if any of the test samples will be mis-classified.
+The out of sample error is **`r OOSerror`**. The out of sample error is calculated as 1 - accuracy for predictions made against the cross-validation set. Given the accuracy rate is above 99% few if any of the test samples will be mis-classified.
 ###Apply the Prediction Model to Testing Data
 Given the Random Forest model was the most accurate it will be applied to predict the 20 quiz results as shown below.From the model
 
